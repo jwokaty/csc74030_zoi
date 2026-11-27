@@ -1,0 +1,109 @@
+---
+title: "csc74030 Homework 10"
+author: "Andres Wokaty"
+format:
+  revealjs:
+    theme: default
+    smaller: true
+
+editor: visual
+---
+
+## Project
+
+### Background
+
+Gram negative bacteria, like E. coli, have a strong barrier that makes them resistant to antibiotics \[3\]. A common two-step process first evaluates the minimal inhibitory concentrations (MICs) that depict inhibition of bacterial growth and can be used to classify a specimen as susceptible (responsive to treatment) or resistant \[2\]. Resistance is confirmed via a secondary diagnostic \[2\]. Kirby-Baurer disk diffusion is a common method used to initially screen for resistance; however, "reading and interpretation" are difficult to reproduce \[2\].
+
+------------------------------------------------------------------------
+
+### Abstract
+
+This project aims to develop a system to classify antibiotic resistance observed on agar plates depicting the minimal inhibitory concentrations (MICs) of bacteria to antibiotics labeled by discs. The system will employ computer vision techniques, such as enhancement, edge detection and object segmentation, to preprocess regions of interest of images taken by a SIRweb/SIRscan system. It will also use a pretrained CNN to analyze the MICs before classifying resistance as susceptible, intermediate, or resistant.
+
+------------------------------------------------------------------------
+
+### Significance
+
+-   The system has the potential to speed up and reduce costs related to evaluation.
+-   Using computer vision techniques with a pretrained CNN further evaluates the reliability of using machine learning for diagnostics.
+
+------------------------------------------------------------------------
+
+## Gaussian pyramid
+
+::: {style="font-size: 0.5em;"}
+Image pyramids are hierarchical representations of an image, a collection of decreasing resolution 25% smaller than previous one arranged in the shape of a pyramid. Gaussian pyramids blur the image, removing edges. The following pyramid is constructed upto N=5 levels using a k=(3,3) window.
+:::
+
+![](homework9/images/roi_gaussian_pyramid.png)
+
+::: {style="font-size: 0.4em;"}
+1.  Giske, C. G., Bressan, M., Fiechter, F., Hinic, V., Mancini, S., Nolte, O., & Egli, A. (2024). Image dataset of disk diffusion assay scanned with the SIRscan system \[Dataset\]. Dryad. <https://doi.org/10.5061/dryad.5dv41nsfj>
+:::
+
+------------------------------------------------------------------------
+
+## Laplacian pyramid
+
+::: {style="font-size: 0.5em;"}
+Laplacian pyramids sharpen edges. The following pyramid is constructed by first creating the Gaussian pyramid and the `kernel = np.array([[0.25, 0.5, 0.25], [0.5, 1, 0.5], [0.25, 0.5, 0.25]])`. The Laplacian pyramid is created with k=(3,3). Note how level 5 draws out more white in the glare and the last two levels resemble the corresponding Gaussian levels.
+:::
+
+![](homework9/images/roi_laplacian_pyramid.png)
+
+------------------------------------------------------------------------
+
+## Shannon Entropy
+
+::: {style="font-size: 0.5em;"}
+Measures the average uncertainty (or information content) in a random variable's outcome. For an image, you can use the histogram bin counts over the total counts as the probability then you can use the following to find the entropy: $$H(X) = \sum{p_ilog(p_i)}$$
+
+H(X) is highest when all outcomes are equally likely.
+:::
+
+------------------------------------------------------------------------
+
+### Shannon Entropy: Gaussian
+
+::: {style="font-size: 0.5em;"}
+A larger range (-255, 256) was selected to compare the Gaussian and Laplace pyramids (bins=511). We can see the Gaussian histograms have positive values. Looking at the first level, we can see the histograms are similar with the number of pixels in each bin and the number of filled bins decreasing. The levels remain around 4 until level 4 where they drop to 3.94 then 3.44. Information loss occurs more slowly across the levels in relation to the decrease in size.
+:::
+
+![](homework9/images/roi_gaussian_shannon.png)
+
+------------------------------------------------------------------------
+
+### Shannon Entropy: Laplacian
+
+::: {style="font-size: 0.5em;"}
+Unlike the Gaussian pyramids, the Laplacian pyramids are centered around 0. We see the same slow loss of information in relation to the decrease in size. Note that information is lost and unrecoverable with Laplacian due to upsampling.
+:::
+
+![](homework9/images/roi_laplacian_shannon.png)
+
+------------------------------------------------------------------------
+
+## Blending
+
+::: {style="font-size: 0.5em;"}
+We'll load images to use for blending and make a threshold. The the ROI on the left has glare from the reflection distorting the zone of inhibition. We'll use a threshold and another image to artificially remove the glare through blending. Future work along this path should increase the contrast of the blended section.
+:::
+
+![](homework9/images/blended.png)
+
+------------------------------------------------------------------------
+
+## References
+
+::: smaller
+1.  Giske, C. G., Bressan, M., Fiechter, F., Hinic, V., Mancini, S., Nolte, O., & Egli, A. (2024). Image dataset of disk diffusion assay scanned with the SIRscan system \[Dataset\]. Dryad. https://doi.org/10.5061/dryad.5dv41nsfj
+
+2.  Giske, C. G., Bressan, M., Fiechter, F., Hinic, V., Mancini, S., Nolte, O., & Egli, A. (2024). GPT-4 based AI agents - the new expert system for detection of antimicrobial resistance mechanisms? Journal of Clinical Microbiology. https://doi.org/10.1128/jcm.00689-24
+
+3.  Lab Tests Guide. (2023). Gram positive vs gram negative bacteria. https://www.labtestsguide.com/gram-positive-vs-gram-negative-bacteria
+:::
+
+## AI Acknowledgement
+
+Claude Sonnet 5.5 was used clarify concepts, troubleshoot, and write code to display image results more beneficially for the presentation, such as adding statistics, labels, and histograms.
