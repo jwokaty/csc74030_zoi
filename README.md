@@ -36,6 +36,20 @@ uv sync
 This creates `.venv` from `pyproject.toml` and `uv.lock`. It installs PyTorch,
 so the first run takes a while.
 
+### Run
+
+To run jupyter lab
+
+```
+uv run jupyter lab
+```
+
+To use [Quarto](https://quarto.org/), it should be installed separately. Then it can be used to build slides:
+
+```
+uv run quarto render slides/homework10.qmd
+``` 
+
 ### FBCNN
 
 Denoising uses [FBCNN](https://github.com/jiaxi-jiang/FBCNN). It is not part of

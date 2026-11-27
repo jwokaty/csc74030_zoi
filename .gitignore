@@ -27,3 +27,6 @@ slides/*
 
 # Personal path settings (copy config.local.example.toml)
 config.local.toml
+
+/.quarto/
+**/*.quarto_ipynb
