@@ -1,0 +1,13 @@
+# Note: This file was written by Claude Sonnet 5.5.
+
+# Shared project settings, tracked by git.
+# Relative paths start at the project root (the folder that holds this file).
+# To use different paths on your own computer, see config.local.example.toml.
+
+[paths]
+images_original = "data/images_original"
+images_measured = "data/images_measured"
+processed = "data/processed"
+roi_labels = "data/roi_labels.csv"
+# Folder where FBCNN is cloned. The folder must be named FBCNN.
+fbcnn = "external/FBCNN"

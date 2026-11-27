@@ -1,0 +1,26 @@
+# Note: This file was written by Claude Sonnet 5.5.
+
+[project]
+name = "csc74030_zoi"
+version = "0.1.0"
+description = "Zone of inhibition detection and classification on plate images"
+requires-python = ">=3.12"
+dependencies = [
+    "cycler>=0.12.1",
+    "ipykernel>=7.4.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.5",
+    "opencv-python>=5.1.0.95",
+    "pandas>=3.1.1",
+    "requests>=2.34.2",
+    "scikit-image>=0.26.0",
+    "scikit-learn>=1.9.1",
+    "scipy>=1.18.1",
+    "torch>=2.15.0",
+    "torchvision>=0.29.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"

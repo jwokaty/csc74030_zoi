@@ -1,0 +1,15 @@
+# Note: This file was written by Claude Sonnet 5.5.
+
+project:
+  render:
+    - notebooks/*.ipynb
+  output-dir: slides
+
+execute:
+  # Use the outputs already saved in each notebook
+  enabled: false
+
+format:
+  revealjs:
+    theme: default
+    slide-number: true

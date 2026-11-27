@@ -1,0 +1,19 @@
+# Note: This file was written by Claude Sonnet 5.5.
+
+# Personal settings for one computer. Copy this file to config.local.toml
+# (same folder as config.toml). config.local.toml is not tracked by git.
+#
+# Only list the paths you want to change. Anything left out uses config.toml.
+# Paths can be relative to the project root or absolute. On Windows, write
+# forward slashes ("D:/plates") or single quotes ('D:\plates').
+#
+# Jupyter: choose the project's .venv kernel (made by `uv sync`) for the notebook.
+# Quarto:  run `uv run quarto render notebooks/<notebook>.ipynb` so it uses the
+#          same environment.
+# Both tools read these paths the same way. They do not depend on the folder
+# the notebook is run from.
+
+[paths]
+# images_original = "D:/plates/images_original"
+# images_measured = "D:/plates/images_measured"
+# processed = "D:/plates/processed"

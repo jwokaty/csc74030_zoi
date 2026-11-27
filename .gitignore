@@ -1,0 +1,29 @@
+# Note: This file was written by Claude Sonnet 5.5.
+
+# Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Quarto
+.quarto/
+/.quarto_cache/
+
+# Data is copied in after cloning (see README); keep roi_labels.csv and the empty processed folder
+data/*
+!data/roi_labels.csv
+!data/processed/
+data/processed/*
+!data/processed/.gitkeep
+
+# External code cloned by each user (see README)
+external/*
+!external/.gitkeep
+
+# Rendered slides
+slides/*
+!slides/.gitkeep
+
+# Personal path settings (copy config.local.example.toml)
+config.local.toml
