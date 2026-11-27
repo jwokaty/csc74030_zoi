@@ -10,7 +10,7 @@ import requests
 import sys
 import torch
 from pathlib import Path
-from zone_of_inhibition.paths import FBCNN, PROCESSED
+from csc74030_zoi.paths import FBCNN, PROCESSED
 
 def load_images(file_path, format=re.compile(r"^\d+(?:\.\d+)* [^.]*\.\w+$"), verbose=False, rename=False, column="original"):
     """Read the images in a folder as grayscale arrays.

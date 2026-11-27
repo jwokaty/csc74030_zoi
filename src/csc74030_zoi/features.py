@@ -1,7 +1,7 @@
 """Texture and shape features: Haralick, box counting, chain code, areas, LBP."""
 
 import numpy as np
-import cv as cv2
+import cv2
 
 
 def glcm(image, directions=[0, 45, 90, 135], d=1):

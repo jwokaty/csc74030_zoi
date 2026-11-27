@@ -1,4 +1,5 @@
 """Plotting helpers for pyramids, histograms, and model results."""
+import matplotlib.pyplot as plt
 
 # Plotting written by Claude Sonnet 5.5
 # The histogram and entropy lines are mine.
