@@ -14,7 +14,7 @@ __pycache__/
 data/*
 !data/roi_labels.csv
 !data/processed/
-#data/processed/*
+data/processed/*
 !data/processed/.gitkeep
 
 # External code cloned by each user (see README)
@@ -22,7 +22,7 @@ external/*
 !external/.gitkeep
 
 # Rendered slides
-#slides/*
+slides/*
 !slides/.gitkeep
 
 # Personal path settings (copy config.local.example.toml)
