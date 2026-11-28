@@ -16,6 +16,8 @@ data/*
 !data/processed/
 data/processed/*
 !data/processed/.gitkeep
+!data/rois/
+data/rois/*
 
 # External code cloned by each user (see README)
 external/*
