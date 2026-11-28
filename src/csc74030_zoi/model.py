@@ -5,7 +5,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVC
 
-from csc74030.features import (haralick_features, box_count_features, chain_code_features, 
+from csc74030_zoi.features import (haralick_features, box_count_features, chain_code_features, 
                                areas_features, lbp_features)
 
 FUNCS = [haralick_features, box_count_features, chain_code_features, 

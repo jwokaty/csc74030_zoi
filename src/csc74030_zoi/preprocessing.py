@@ -34,7 +34,7 @@ def load_images(file_path, format=re.compile(r"^\d+(?:\.\d+)* [^.]*\.\w+$"), ver
                 f = fixed_path
             file_name = fixed_name
         image = cv2.imread(f, cv2.IMREAD_GRAYSCALE)
-        name = re.sub(r'[\s.]', "_", file_name).removesuffix("_jpg")
+        name = re.sub(r'[\s.]', "_", file_name).removesuffix("_jpg").removesuffix("_png")
         images.loc[len(images)] = [name, image]
     return images
 
